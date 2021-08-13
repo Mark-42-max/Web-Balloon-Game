@@ -7,10 +7,21 @@
 }
 
 html {
+    width: 100vw;
+    height: 100vw;
     font-size: 62.5%;
 }
 
 body {
     width: 100vw;
     height: 100vh;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+#my-canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
