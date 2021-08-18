@@ -33,6 +33,13 @@ var hit = false;
 
 //to draw at correct position
 
+function drawBackground() {
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+
 function draw() {
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     ctx.save();
@@ -59,9 +66,11 @@ function draw() {
     drawTrees();
 
 
+
     ctx.restore();
 }
 draw();
+
 
 
 //drawing balloon
@@ -73,14 +82,18 @@ function drawBalloon() {
 
     //upper rect
     ctx.fillStyle = "#4a55a8";
+    ctx.strokeStyle = "#fc3003";
     ctx.beginPath();
     ctx.rect(-70, -90, 140, 20);
+    ctx.stroke();
     ctx.fill();
 
     //lower rect
     ctx.fillStyle = "#091ebd";
+    ctx.strokeStyle = "#fc3003";
     ctx.beginPath();
     ctx.rect(-70, -70, 140, 70);
+    ctx.stroke();
     ctx.fill();
 
     //left string
@@ -229,8 +242,6 @@ window.addEventListener("mouseup", () => {
     heating = false;
 });
 
-
-
 function animate() {
 
     if (heating) {
@@ -253,7 +264,6 @@ function animate() {
     draw();
     hit = hitDetection();
     if (hit) { return; }
-
     window.requestAnimationFrame(animate);
 }
 
@@ -273,11 +283,11 @@ function hitDetection() {
         of tree) {
 
         const trunkWidth = 90;
-        const treeBottomLeft = { x: x + trunkWidth + 90, y: -(height + height / 6) }
-        const treeMidLeft = { x: x + trunkWidth - 80, y: -(height + height / 10) - 30 }
-        const treeTopLeft = { x: x + trunkWidth - 50, y: -(height + height / 8) - 60 }
-        const treeTop = { x: x + trunkWidth - 30, y: -(height + height / 9) - 50 }
-        const treeTopRight = { x: x + trunkWidth - 10, y: -(height + height / 10) - 30 }
+        const treeBottomLeft = { x: x + trunkWidth - 90, y: -(height + height / 6) } //x + trunkWidth - 90, -(height + height / 6)
+        const treeMidLeft = { x: x + trunkWidth - 80, y: -(height + height / 10) - 30 } //x + trunkWidth - 80, -(height + height / 10) - 30
+        const treeTopLeft = { x: x + trunkWidth - 50, y: -(height + height / 8) - 60 } //x + trunkWidth - 50, -(height + height / 8) - 60
+        const treeTop = { x: x + trunkWidth - 30, y: -(height + height / 9) - 50 } //x + trunkWidth - 30, -(height + height / 9) - 50
+        const treeTopRight = { x: x + trunkWidth - 10, y: -(height + height / 10) - 30 } //x + trunkWidth - 50, -(height + height / 4) - 10
 
 
         if (getDistance(treeBottomLeft, rightLowerPoint) < r1) { return true; }
